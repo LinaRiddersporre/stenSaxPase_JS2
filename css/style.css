@@ -1,1 +1,6 @@
-section
+body{
+    background-color: aquamarine;
+}
+img{
+    width: 15rem;
+}
