@@ -21,7 +21,7 @@ function computerRandomChoice(){
 
 const stone = document.querySelector('.stone');
 const scissor = document.querySelector('.scissor');
-const paper = document.querySelector('.paper');
+const bag = document.querySelector('.bag');
 const userParagrafScore = document.querySelector('.userScore');
 let computerScore = document.querySelector('.computerScore');
 let userPicChoice = document.querySelector('.userPicChoice');
@@ -38,7 +38,7 @@ stone.addEventListener('click', function(){
         userScore++;
         computerPicChoice.src = 'img/sax2.png';
     }else if(randomNumber === 2){
-        computerPicChoice.src = 'img/papper1.png';
+        computerPicChoice.src = 'img/påse.png';
         computerScore.innerText = 'Spelet slut, försök igen';
     }else {
         computerPicChoice.src = 'img/sten.png';
@@ -51,7 +51,7 @@ scissor.addEventListener('click', function(){
     let randomNumber = computerRandomChoice();
     if(randomNumber === 2){
         userScore++;
-        computerPicChoice.src = 'img/papper1.png';
+        computerPicChoice.src = 'img/påse.png';
     }else if(randomNumber === 0){
         computerPicChoice.src = 'img/sten.png';
         computerScore.innerText = 'Spelet slut, försök igen';
@@ -62,8 +62,8 @@ scissor.addEventListener('click', function(){
 
 })
 
-paper.addEventListener('click', function(){
-    userPicChoice.src = 'img/papper1.png';
+bag.addEventListener('click', function(){
+    userPicChoice.src = 'img/påse.png';
     let randomNumber = computerRandomChoice();
     if(randomNumber === 0){
         userScore++;
@@ -72,7 +72,7 @@ paper.addEventListener('click', function(){
         computerPicChoice.src = 'img/sax2.png';
         computerScore.innerText = 'Spelet slut, försök igen';
     }else{
-        computerPicChoice.src = 'img/papper1.png';
+        computerPicChoice.src = 'img/påse.png';
     }
     userParagrafScore.innerText = userScore;
 
