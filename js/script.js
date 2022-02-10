@@ -12,3 +12,18 @@ addButton.addEventListener('click', function(event){
     event.preventDefault();
 });
 
+
+function computerRandomChoice(){
+    const computerChoice = document.querySelector('.computerChoice');
+    const array = ['sten', 'sax', 'papper'];
+    let randomNumber = Math.floor(Math.random()*3);
+    console.log('computerRandomChoice return: ', randomNumber);
+    let randomChoice = `${array[randomNumber]}`
+    computerChoice.innerText = randomChoice; 
+    console.log(randomChoice);
+}
+
+
+computerRandomChoice();
+
+
