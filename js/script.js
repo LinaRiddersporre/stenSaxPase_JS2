@@ -31,7 +31,7 @@ let computerPicChoice = document.querySelector('.computerPicChoice');
 let userChoice = document.querySelector('pictureOfChoice');
 let userScore = 0;
 
-stone.addEventListener('click', function(event){
+stone.addEventListener('click', function(){
     userPicChoice.src = 'img/sten.png';
     let randomNumber = computerRandomChoice();
     if(randomNumber === 1){
@@ -46,7 +46,7 @@ stone.addEventListener('click', function(event){
     userParagrafScore.innerText = userScore;
 })
 
-scissor.addEventListener('click', function(event){
+scissor.addEventListener('click', function(){
     userPicChoice.src = 'img/sax2.png';
     let randomNumber = computerRandomChoice();
     if(randomNumber === 2){
@@ -62,7 +62,7 @@ scissor.addEventListener('click', function(event){
 
 })
 
-paper.addEventListener('click', function(event){
+paper.addEventListener('click', function(){
     userPicChoice.src = 'img/papper1.png';
     let randomNumber = computerRandomChoice();
     if(randomNumber === 0){
