@@ -60,4 +60,22 @@
         }
         document.querySelector('.userScore').innerText = userScore;
     })
+
+    function getScoreBoard(){
+        fetch(scoreBoardUrl).then(r=>r.json()).then(data=>{console.log(data)
+        createScoreboardElements(data)})
+    }
+    getScoreBoard();
+
+    function createScoreboardElements(data){
+        for(const post in data){
+            console.log('data', data)
+            let highscore = data[post];
+            console.log('highscore', highscore)
+            let player = document.createElement('h3');
+            document.querySelector('.scoreboard').appendChild(player);
+            player.innerText = highscore.name + ' ........ ' + highscore.score
+        }
+    }
 })();
+
