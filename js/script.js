@@ -87,10 +87,7 @@
         let scoreArray
         let score = document.querySelector('.userScore').innerText 
         let name = document.querySelector('.playerName').innerText
-        let player = {
-            name,
-            score
-        }
+        
         
         getScoreBoard().then((data)=>{
             scoreArray = data;
@@ -128,3 +125,4 @@
 //TODO: ta bort alla element som är över den senaste top 5
 //TODO: gör allt oåtkomligt innan namn är ifyllt
 //TODO: reloada sidan med reload knapp?
+//TODO: Kolla på vg
