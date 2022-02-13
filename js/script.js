@@ -58,12 +58,17 @@
         }else{
             document.querySelector('.computerPicChoice').src = 'img/påse.png';
         }
+
         document.querySelector('.userScore').innerText = userScore;
+        whatPlace();
     })
 
     function getScoreBoard(){
-        fetch(scoreBoardUrl).then(r=>r.json()).then(data=>{console.log(data)
-        createScoreboardElements(data)})
+        return fetch(scoreBoardUrl).then(r=>{ return r.json().then((data=>{  
+            console.log(data)
+            createScoreboardElements(data)
+            return data
+        }))})
     }
     getScoreBoard();
 
@@ -77,5 +82,49 @@
             player.innerText = highscore.name + ' ........ ' + highscore.score
         }
     }
-})();
 
+    function whatPlace(){
+        let scoreArray
+        let score = document.querySelector('.userScore').innerText 
+        let name = document.querySelector('.playerName').innerText
+        let player = {
+            name,
+            score
+        }
+        
+        getScoreBoard().then((data)=>{
+            scoreArray = data;
+            
+            console.log('playerScore', score);
+            console.log('scoreArray', scoreArray[0].score)
+            scoreArray.push({
+                name, 
+                score
+            })
+            result = Object.values(scoreArray).sort((a, b)=>b.score - a.score).slice(0, 5)
+            console.log('result', result)
+        }).then(()=>{
+            const headerObject = {
+                "Content-type": "application/json; charset=UTF-8"
+            };
+            for(let i = 0; i<5; i++){
+            let addPlayerUrl0 = `https://scoreboard-ed666-default-rtdb.europe-west1.firebasedatabase.app/${i}.json`;
+                fetch(addPlayerUrl0,{
+                    method: `PUT`,
+                    body: JSON.stringify({
+                        name: `${result[i].name}`,
+                        score: `${result[i].score}`
+                    }),
+                    headers: headerObject
+                })}
+                console.log('result', result)
+        })
+        
+    }
+}
+)();
+
+//TODO: if sats för spelslut kontroll
+//TODO: ta bort alla element som är över den senaste top 5
+//TODO: gör allt oåtkomligt innan namn är ifyllt
+//TODO: reloada sidan med reload knapp?
