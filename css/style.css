@@ -1,11 +1,53 @@
 body{
-    background-color: aquamarine;
+    background-color: rgb(233, 190, 190);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+body p{
+    font-size: 3rem;
+}
+body h1{
+    font-size: 1.5rem;
+}
+
+form{
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 img{
     width: 15rem;
+    height: 12rem;
 }
 
-.pictureOfChoice{
-    border: solid black 2px;
+span{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+p{
+    margin: 0.5rem;
+}
+
+.players{
+    display: flex;
+    border-bottom: solid black 0.5px;
+}
+
+.players h1{
+    margin: 1rem 4rem;
+}
+
+.resetButton{
+    margin-top: 1rem;
+    width: 20rem;
+    height: 2rem;
+}
+
+.scoreboard h1{
+    font-size: 2rem;
+    text-decoration: underline;
 }

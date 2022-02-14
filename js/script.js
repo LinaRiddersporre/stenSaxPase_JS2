@@ -18,7 +18,6 @@
         console.log('event1', event)
         whatPlace();
         console.log('event2')
-        
         event.preventDefault();
     })
 
@@ -75,9 +74,7 @@
         }else{
             document.querySelector('.computerPicChoice').src = 'img/påse.png';
         }
-
         document.querySelector('.userScore').innerText = userScore;
-        
     })
 
     function getScoreBoard(){
@@ -88,7 +85,6 @@
         }))})
     }
     
-
     function createScoreboardElements(data){
         for(const post in data){
             console.log('data', data)
@@ -130,7 +126,6 @@
                     headers: headerObject
                 })}
                 console.log('result', result)
-                
         }).then(()=>{
             deleteElements();
         }).then(()=>{
@@ -138,9 +133,7 @@
                 window.location.reload();
             }, 500);
             console.log('hämta score')
-            
         })
-        
     }
 
     function hideElements(){
@@ -153,7 +146,7 @@
     }
 
     function hideAddName(){
-            document.querySelector('.addButton').style.display='none'; 
+            document.querySelector('form').style.display='none'; 
             document.querySelector('.resetButton').style.display='inline-block';
     }
 
@@ -163,7 +156,6 @@
             const h3Elements = allH3tags[i];
             h3Elements.remove();
         }
-        document.querySelector('.computerScore').innerText = '';
     }
 }
 )();

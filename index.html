@@ -13,19 +13,19 @@
         <label for="userName">Ange namn</label>
         <input type="text" name="userName" class="userName">
         <button type="submit" class="addButton">Lägg till</button>
-        
     </form>
-    <button class="resetButton">Starta om spelet</button>
-    <section>
-        <h1 class="playerName">Placeholder Name</h1>
-        <p class="userScore">0</p>
-        <img src="img/påse.png" alt="userChoice" class="userPicChoice">
-    </section>
-    <section>
-        
-        <h1>Computer</h1>
-        <p class="computerScore">0</p>
-        <img src="img/påse.png" alt="computerChoice" class="computerPicChoice">
+    <span>Winstreak</span>
+    <p class="userScore">0</p>
+    <p class="computerScore"></p>
+    <section class="players">
+        <section class="player1">
+            <h1 class="playerName">Placeholder Name</h1>
+            <img src="img/påse.png" alt="userChoice" class="userPicChoice">
+        </section>
+        <section class="player2">
+            <h1>Computer</h1>
+            <img src="img/påse.png" alt="computerChoice" class="computerPicChoice">
+        </section>
     </section>
     <div class="hiddenSection">
         <section class="pictureOfChoice">
@@ -34,6 +34,7 @@
             <img src="img/påse.png" alt="paper" class="bag">
         </section>
     </div>
+    <button class="resetButton">Starta om spelet</button>
     <section class="scoreboard">
         <h1>Leaderboard</h1>
     </section>
