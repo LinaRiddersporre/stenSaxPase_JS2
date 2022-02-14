@@ -1,12 +1,26 @@
 (function(){
     const scoreBoardUrl = `https://scoreboard-ed666-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 
+    deleteElements();
+    hideElements();
+    getScoreBoard();
+    hideResetButton()
     document.querySelector('.addButton').addEventListener('click', function(event){
         userInput = document.querySelector('.userName').value;
         console.log(userInput);
         document.querySelector('.playerName').innerText = userInput;
+        document.querySelector('.hiddenSection').style.display='inline-block';
+        hideAddName();
         event.preventDefault();
     });
+
+    document.querySelector('.resetButton').addEventListener('click', function(event){
+        console.log('event1', event)
+        whatPlace();
+        console.log('event2')
+        
+        event.preventDefault();
+    })
 
     function computerRandomChoice(){
         let randomNumber = Math.floor(Math.random()*3);
@@ -25,6 +39,7 @@
         }else if(randomNumber === 2){
             document.querySelector('.computerPicChoice').src = 'img/påse.png';
             document.querySelector('.computerScore').innerText = 'Spelet slut, försök igen';
+            hideElements();
         }else {
             document.querySelector('.computerPicChoice').src = 'img/sten.png';
         }
@@ -40,6 +55,7 @@
         }else if(randomNumber === 0){
             document.querySelector('.computerPicChoice').src = 'img/sten.png';
             document.querySelector('.computerScore').innerText = 'Spelet slut, försök igen';
+            hideElements();
         }else{
             document.querySelector('.computerPicChoice').src = 'img/sax2.png';
         }
@@ -55,12 +71,13 @@
         }else if(randomNumber === 1){
             document.querySelector('.computerPicChoice').src = 'img/sax2.png';
             document.querySelector('.computerScore').innerText = 'Spelet slut, försök igen';
+            hideElements();
         }else{
             document.querySelector('.computerPicChoice').src = 'img/påse.png';
         }
 
         document.querySelector('.userScore').innerText = userScore;
-        whatPlace();
+        
     })
 
     function getScoreBoard(){
@@ -70,7 +87,7 @@
             return data
         }))})
     }
-    getScoreBoard();
+    
 
     function createScoreboardElements(data){
         for(const post in data){
@@ -88,10 +105,8 @@
         let score = document.querySelector('.userScore').innerText 
         let name = document.querySelector('.playerName').innerText
         
-        
         getScoreBoard().then((data)=>{
             scoreArray = data;
-            
             console.log('playerScore', score);
             console.log('scoreArray', scoreArray[0].score)
             scoreArray.push({
@@ -105,8 +120,8 @@
                 "Content-type": "application/json; charset=UTF-8"
             };
             for(let i = 0; i<5; i++){
-            let addPlayerUrl0 = `https://scoreboard-ed666-default-rtdb.europe-west1.firebasedatabase.app/${i}.json`;
-                fetch(addPlayerUrl0,{
+            let addPlayerUrl = `https://scoreboard-ed666-default-rtdb.europe-west1.firebasedatabase.app/${i}.json`;
+                fetch(addPlayerUrl,{
                     method: `PUT`,
                     body: JSON.stringify({
                         name: `${result[i].name}`,
@@ -115,8 +130,40 @@
                     headers: headerObject
                 })}
                 console.log('result', result)
+                
+        }).then(()=>{
+            deleteElements();
+        }).then(()=>{
+            setTimeout(function(){
+                window.location.reload();
+            }, 500);
+            console.log('hämta score')
+            
         })
         
+    }
+
+    function hideElements(){
+        document.querySelector('.hiddenSection').style.display='none';
+    }
+
+    function hideResetButton(){
+        document.querySelector('.resetButton').style.display='none';
+        document.querySelector('.addButton').style.display='inline-block';
+    }
+
+    function hideAddName(){
+            document.querySelector('.addButton').style.display='none'; 
+            document.querySelector('.resetButton').style.display='inline-block';
+    }
+
+    function deleteElements(){
+        const allH3tags = document.querySelectorAll('h3');
+        for(let i=0; i<allH3tags.length; i++){
+            const h3Elements = allH3tags[i];
+            h3Elements.remove();
+        }
+        document.querySelector('.computerScore').innerText = '';
     }
 }
 )();
